@@ -1,0 +1,4 @@
+Flask==2.0.3
+requests==2.27.1
+simplejson==3.17.6
+Werkzeug==2.0.3

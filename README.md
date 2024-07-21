@@ -20,12 +20,32 @@ Container3 <Link> Container1
 需要下prompt給WCA@IBM去生成程式碼，以下為prompting:
 
 
-## Container11:
+## Container11(Container1):
+
+### Prompt:
+
+```
+Create app.py can run web server service and have one function that can read json file as api call with get method. THis function also can solve CORS issue. Also giva me the requirements.txt content. After that, deploy to Docker containe and show the file structure.
+```
+
+### 產出:
+
+**file structure:**
 ```
 
 ```
 
-## my-final:
+## my-final(Container2):
+
+### Prompt:
+
+```
+Create app.py can run web server service and have one function that can read json file as api call with get method. THis function also can solve CORS issue. Also giva me the requirements.txt content. After that, deploy to Docker containe and show the file structure.
+```
+
+### 產出:
+
+**file structure:**
 ```
 
 ```

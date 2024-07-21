@@ -62,6 +62,7 @@ Create app.py can run web server service and have one function that can read jso
 ### 產出:
 Sure! Here's what I found:
 
+**Python app.py** file:
 ```python
 import json
 from flask import Flask, request
@@ -126,6 +127,11 @@ Flask==2.0.3
 requests==2.27.1
 simplejson==3.17.6
 Werkzeug==2.0.3
+```
+
+**Python app.py** file:
+```python
+return jsonify(data)  # Convert dictionary to JSON response
 ```
 
 **file structure:**

@@ -72,13 +72,16 @@ CMD [ "python", "./app.py" ]
 
 Build the Docker image:
 
-
+```
 docker build -t my-app:latest .
 Run the Docker container:
 docker run -d -p 5000:5000 my-app
+```
 
 Test the application by making an API call:
+```
 curl http://localhost:5000/api/v1/read
+```
 This should return the contents of the data.json file.
 
 Here's the file structure of your project:

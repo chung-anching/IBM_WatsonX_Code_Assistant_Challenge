@@ -57,9 +57,9 @@ Here's the **requirements.txt** file:
 ```
 flask==2.0.3
 json==2.0.9
-To deploy this application to Docker container, you can follow these steps:
 ```
 
+To deploy this application to Docker container, you can follow these steps:
 Create a **Dockerfile** with the following contents:
 ```Dockerfile
 FROM python:3.8-slim
@@ -82,11 +82,13 @@ curl http://localhost:5000/api/v1/read
 This should return the contents of the data.json file.
 
 Here's the file structure of your project:
+```
 .
 ├── Dockerfile
 ├── README.md
 ├── app.py
 ├── data.json
 └── requirements.txt
+```
 
 

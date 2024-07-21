@@ -32,6 +32,9 @@ Container3 <Link> Container1
 
 
 ## Container3:
+
+### Prompt:
+
 ```
 Create app.py can run web server service and have one function that can read json file as api call with get method. THis function also can solve CORS issue. Also giva me the requirements.txt content. After that, deploy to Docker containe and show the file structure.
 ```
@@ -84,7 +87,7 @@ curl http://localhost:5000/api/v1/read
 ```
 This should return the contents of the data.json file.
 
-Here's the file structure of your project:
+Here's the **file structure** of your project:
 ```
 .
 ├── Dockerfile
@@ -93,5 +96,27 @@ Here's the file structure of your project:
 ├── data.json
 └── requirements.txt
 ```
+
+#### 後來修改：
+
+**Requirements.txt** file:
+```
+Flask==2.0.3
+requests==2.27.1
+simplejson==3.17.6
+Werkzeug==2.0.3
+```
+
+**file structure:**
+```
+.
+├── Dockerfile
+├── css
+│   └── style.css
+├── index.html
+└── js
+    └── act.js
+```
+
 
 

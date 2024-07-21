@@ -37,6 +37,8 @@ Create app.py can run web server service and have one function that can read jso
 ```
 
 Sure! Here's what I found:
+
+```python
 import json
 from flask import Flask, request
 app = Flask(__name__)
@@ -49,20 +51,25 @@ def read_json():
 
 if __name__ == '__main__':
     app.run()
-    
+```
+
 Here's the **requirements.txt** file:
+```
 flask==2.0.3
 json==2.0.9
 To deploy this application to Docker container, you can follow these steps:
+```
 
 Create a **Dockerfile** with the following contents:
-
+```Dockerfile
 FROM python:3.8-slim
 WORKDIR /app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 CMD [ "python", "./app.py" ]
+```
+
 Build the Docker image:
 
 

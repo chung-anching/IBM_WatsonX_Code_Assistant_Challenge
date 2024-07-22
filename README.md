@@ -39,7 +39,162 @@ When I enter "call java" button, it will call api http://localhost:8080/my-final
 
 ### 產出:
 
+Create a new resources directory in the src/main/java/com/example/myproject directory and add a new JSON file named data.json. This file will contain the data that we want to return as a JSON response.
+Add the following JSON data to the data.json file.
 
+Create a new **HTML file** named **index.html** in the **src/main/webapp** directory. This file will contain the HTML code for our web page.
+Add the following HTML code to the index.html file:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WatsonX Code Assistant for Track3</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="js/act.js"></script>
+</head>
+<body>
+<div id="container">
+    <button id="btn-py">Python Call</button>
+    <button id="btn-java">Java Call</button>
+    <table id="table-a" class="table">
+        <thead>
+        <tr>
+            <th>Member ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Join Date</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <table id="table-b" class="table">
+        <thead>
+        <tr>
+            <th>Member ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Join Date</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+</body>
+</html>
+```
+
+Create a new **CSS file** named **style.css** in the **src/main/webapp/css** directory. This file will contain the CSS styles for our web page.
+Add the following CSS code to the style.css file:
+
+```css
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 80%;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.table th, .table td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#btn-py, #btn-java {
+    margin: 20px;
+}
+```
+
+Create a new **JavaScript file** named **act.js** in the **src/main/webapp/js** directory. This file will contain the JavaScript code for our web page.
+Add the following JavaScript code to the act.js file:
+
+```
+$(document).ready(function () {
+    $('#btn-py').click(function () {
+        $.ajax({
+            url: 'http://localhost:8080/my-final/api/data',
+            dataType: 'json',
+            success: function (data) {
+                var table = $('#table-a tbody');
+                table.empty();
+                $.each(data, function (index, item) {
+                    $('<tr>')
+                            .append($('<td>').text(item.member_id))
+                            .append($('<td>').text(item.name))
+                            .append($('<td>').text(item.email))
+                            .append($('<td>').text(item.phone))
+                            .append($('<td>').text(item.address))
+                            .append($('<td>').text(item.join_date))
+                            .appendTo(table);
+                });
+            }
+        });
+    });
+
+    $('#btn-java').click(function () {
+        $.ajax({
+            url: 'http://localhost:8080/my-final/api/data',
+            dataType: 'json',
+            success: function (data) {
+                var table = $('#table-b tbody');
+                table.empty();
+                $.each(data, function (index, item) {
+                    $('<tr>')
+                            .append($('<td>').text(item.member_id))
+                            .append($('<td>').text(item.name))
+                            .append($('<td>').text(item.email))
+                            .append($('<td>').text(item.phone))
+                            .append($('<td>').text(item.address))
+                            .append($('<td>').text(item.join_date))
+                            .appendTo(table);
+                });
+            }
+        });
+    });
+});
+```
+
+Create a new **Dockerfile** file in the root directory of your project. This file will contain the instructions for building our Docker image.
+Add the following Dockerfile code to the Dockerfile file:
+
+```Docker
+FROM nginx:latest
+COPY ./target/my-final-1.0-SNAPSHOT.war /usr/share/nginx/html/my-final.war
+COPY ./src/main/webapp/index.html /usr/share/nginx/html/index.html
+COPY ./src/main/webapp/css/style.css /usr/share/nginx/html/css/style.css
+COPY ./src/main/webapp/js/act.js /usr/share/nginx/html/js/act.js
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+**Build** your Docker image by running the following command in the terminal:
+```linux
+docker build -t my-final:latest .
+```
+
+**Run** your Docker container by executing the following command in the terminal:
+```
+docker run -p 8080:8080 my-final:latest
+```
+
+Access your web page at **http://localhost:8080/index.html**. You should see a page with two buttons and two tables. Clicking the "Python Call" button should populate the first table with data from the data.json file, while clicking the "Java Call" button should populate the second table with the same data.
+Note: Make sure you have Docker installed on your system before running these commands.
+
+Time Consuming: 175 minutes
+
+執行過程：
 ```
 cd Container11
 docker images

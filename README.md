@@ -20,24 +20,49 @@ Container3 <Link> Container1
 需要下prompt給WCA@IBM去生成程式碼，以下為prompting:
 
 
+\n
 ## Container11(Container1):
 
-### Prompt:
-
+### Prompt1:
 ```
-Create app.py can run web server service and have one function that can read json file as api call with get method. THis function also can solve CORS issue. Also giva me the requirements.txt content. After that, deploy to Docker containe and show the file structure.
+final/api/data
+[{"member_id":"001","name":"Alice Chen","email":"alice.chen@example.com","phone":"0912345678","address":"123 Main St, Taipei City, Taiwan","join_date":"2023-05-15"},{"member_id":"002","name":"Bob Lin","email":"bob.lin@example.com","phone":"0923456789","address":"456 Oak St, Kaohsiung City, Taiwan","join_date":"2023-06-20"},{"member_id":"003","name":"Cathy Wang","email":"cathy.wang@example.com","phone":"0934567890","address":"789 Pine St, Tainan City, Taiwan","join_date":"2023-07-10"},{"member_id":"004","name":"David Lee","email":"david.lee@example.com","phone":"0945678901","address":"101 Maple St, Taichung City, Taiwan","join_date":"2023-08-05"}]
+base on this java api, help me:
+Generate a html file named index.html and css file named style.css and javascript file named act.js, that page title shows “watsonx code assistant for Track3”. This page contains 2 buttons at the same margin, one is called “python call”, another is called “Java call”. 2 Tables are at the same margin and be under 2 buttons, 1 table named A is under the button of “python call” and another 1 table named B is under the button of “Java call”. Table A and B are fixed height and width with scroll bars. html page should import jQuery library. Button of “Python call” can call restful api and extract data from json file then show the data in the table A. and button of “Java call” can call restful api and extract data from json file then show the data in the table B. All api call functions should implement by jQuery ajax and can solve Cross-Origin Resource Sharing. Buttons and tales locates at the center of page. After generate html , css and javascript filess, then generate a Dockerfile file. Target is to contain index.html and css/style.css under css folder and js/act.js under js folder in Nginx Docker container and service port as 8080
+Provide the time consumption of generating those files by each and shows quantity in second as unit
+```
+
+### Prompt2:
+```
+When I enter "call java" button, it will call api http://localhost:8080/my-final/api/data and get data {"member_id":"001","name":"Alice Chen","email":"alice.chen@example.com","phone":"0912345678","address":"123 Main St, Taipei City, Taiwan","join_date":"2023-05-15"}, put the data in the table under the button.
 ```
 
 ### 產出:
 
+
+```
+cd Container11
+docker images
+docker rmi 4e6148d6840d  #刪掉剛剛失敗的
+docker build -t watsonx/track3-code-assistant:latest .
+docker run -d -p 80:80 watsonx/track3-code-assistant:latest
+```
+
 **file structure:**
 ```
-
+.
+├── Dockerfile
+├── css
+│   └── style.css
+├── index.html
+└── js
+    └── act.js
 ```
 
+\n
 ## my-final(Container2):
 
-### Prompt:
+### Prompt1:
 
 ```
 I have zero experience in Java. Please tell me the most detail step:
@@ -77,7 +102,6 @@ cd my-app
 7. Create the **Java class**: Create a new Java class called **MyApp.java** in the **src/main/java/com/example** folder with the following content:
 ```
 package com.example;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -90,7 +114,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebServlet("/api/data")
 public class MyApp extends HttpServlet {
-
    private static final long serialVersionUID = 1L;
 
    @Override
@@ -119,9 +142,10 @@ docker pull tomcat:latest
 docker run -d -p 8080:8080 --name my-tomcat -v "$(pwd)"/target/my-app.war:/usr/local/tomcat/webapps/my-app.war tomcat:latest
 ```
 12. Test the application: Open your web browser and navigate to **http://localhost:8080/my-app/api/data**. You should see the following output:
-
+```
 {"message":"Hello, world!"}
-
+// 後續改成自己想要的data.json
+```
 13. Set the service port: By default, the Tomcat container uses port 8080 for HTTP traffic. However, you may want to set a different port for your application. To do this, you can modify the docker run command to map the desired port to port 8080 inside the container:
 ```
 docker run -d -p <desired_port>:8080 --name my-tomcat -v "$(pwd)"/target/my-app.war:/usr/local/tomcat/webapps/my-app.war tomcat:latest
@@ -132,12 +156,82 @@ docker run -d -p 80:8080 --name my-tomcat -v "$(pwd)"/target/my-app.war:/usr/loc
 ```
 That's it! You've created a Java web application that reads a JSON file as an API call with GET method, built a WAR file using Maven, deployed it to a Docker container using the Tomcat image, and set the service port to 8080.
 
+### Prompt2:
+```
+Tell me the detailed file structure:
+```
+### 產出:
+```
+my-app/
+├── pom.xml
+└── src/
+    ├── main/
+        ├── java/
+        │   └── com/
+        │       └── example/
+        │           └── MyApp.java
+        └── resources/
+            └── data.json
+    └── test/
+        └── java/
+```
+
+
+
+### 後續修改:
+
+新增or更改部分：
+```java
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        InputStream inputStream = getServletContext().getResourceAsStream("/WEB-INF/classes/data.json");
+        if (inputStream == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Resource not found");
+            return;
+        }
+        String json = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+        ObjectMapper mapper = new ObjectMapper();
+        Object obj = mapper.readValue(json, Object.class);
+
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        response.setContentType("application/json");
+        response.getWriter().write(mapper.writeValueAsString(obj));
+    }
+}
+```
+
+### 執行：
+```
+mvn clean package
+docker build -t my-final .
+docker run -p 8080:8080 my-final
+```
 
 **file structure:**
 ```
-
+.
+├── Dockerfile
+├── pom.xml
+├── src
+│   └── main
+│       ├── java
+│       │   └── com
+│       │       └── example
+│       │           └── MyApp.java
+│       ├── resources
+│       │   └── data.json
+│       └── webapp
+│           ├── WEB-INF
+│           │   └── web.xml
+└──           └── index.jsp
 ```
-
+\n
 
 ## Container3:
 
@@ -186,14 +280,16 @@ CMD [ "python", "./app.py" ]
 ```
 
 **Build** the Docker image:
-
 ```
-docker build -t my-app:latest .
-Run the Docker container:
-docker run -d -p 5000:5000 my-app
+docker build -t container3:latest .
 ```
 
-Test the application by making an API call:
+**Run** the Docker container3:
+```
+docker run -p 5000:5000 container3
+```
+
+**Test** the application by making an API call:
 ```
 curl http://localhost:5000/api/v1/read
 ```

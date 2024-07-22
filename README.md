@@ -132,7 +132,7 @@ Add the following CSS code to the style.css file:
 Create a new **JavaScript file** named **act.js** in the **src/main/webapp/js** directory. This file will contain the JavaScript code for our web page.
 Add the following JavaScript code to the act.js file:
 
-```
+```js
 $(document).ready(function () {
     $('#btn-py').click(function () {
         $.ajax({

@@ -6,8 +6,9 @@
   
 ## 成果：  
 <img src="pic/Screen_Container1.png" width="70%" height="70%">
-<img src="pic/Screen_Container1_Java.png" width="70%" height="70%">
-<img src="pic/Screen_Container1_Python.png" width="70%" height="70%">
+<img src="pic/Screen_Container1_Python.png" width="50%" height="50%">
+<img src="pic/Screen_Container1_Java.png" width="50%" height="50%">
+
   
 ### 目的：
 下prompt給WCA@IBM去生成程式碼，以下為prompting:

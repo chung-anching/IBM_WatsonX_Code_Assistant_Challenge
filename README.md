@@ -1,22 +1,8 @@
 
 
 ## 架構：
-```
-Container1 <Link> Container2/3
-	Dockerfile
-		HTML
-		React.js
-Container2 <Link> Container1
-	Dockerfile
-		Tomcat runtime
-		RestAPI func by Java
-		dataset.json
-Container3 <Link> Container1
-	Dockerfile
-		FastAPI
-		RestAPI func by Python
-		dataset.json
-```
+<img src="Structure.png" width="70%" height="70%">
+
   
 ## 成果：  
 <img src="pic/Screen_Container1.png" width="70%" height="70%">

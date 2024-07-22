@@ -268,7 +268,7 @@ cd my-app
 }
 ```
 7. Create the **Java class**: Create a new Java class called **MyApp.java** in the **src/main/java/com/example** folder with the following content:
-```
+```java
 package com.example;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -373,6 +373,14 @@ import java.nio.charset.StandardCharsets;
     }
 }
 ```
+
+增加**Dockerfile**:
+```Dockerfile
+FROM tomcat:10.1-jdk11-openjdk-slim
+COPY target/my-final.war /usr/local/tomcat/webapps/
+EXPOSE 8080
+```
+
 
 ### 執行：
 ```

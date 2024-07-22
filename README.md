@@ -13,6 +13,9 @@
   <img src="pic/Screen_Container1_Python.png" width="45%">
   <img src="pic/Screen_Container1_Java.png" width="45%">
 </p>
+<p align="center">
+<img src="pic/Docker.png" width="90%" height="90%">
+</p>
   
 ### 目的：
 下prompt給WCA@IBM去生成程式碼，以下為prompting:

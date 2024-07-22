@@ -6,7 +6,7 @@
   
 ## 成果：  
 <img src="pic/Screen_Container1.png" width="70%" height="70%">
-<img src="pic/Screen_Container1_Python.png" width="40%" height="40%"><img src="pic/Screen_Container1_Java.png" width="40%" height="40%">
+<img src="pic/Screen_Container1_Python.png" width="40%" height="40%"> <img src="pic/Screen_Container1_Java.png" width="40%" height="40%">
 
   
 ### 目的：

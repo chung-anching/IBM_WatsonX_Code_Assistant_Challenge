@@ -181,7 +181,7 @@ $(document).ready(function () {
 Create a new **Dockerfile** file in the root directory of your project. This file will contain the instructions for building our Docker image.
 Add the following Dockerfile code to the Dockerfile file:
 
-```Docker
+```Dockerfile
 FROM nginx:latest
 COPY ./target/my-final-1.0-SNAPSHOT.war /usr/share/nginx/html/my-final.war
 COPY ./src/main/webapp/index.html /usr/share/nginx/html/index.html

@@ -17,6 +17,11 @@ Container3 <Link> Container1
 		dataset.json
 
   
+## 成果：  
+<img src="pic/Screen_Container1.png" width="70%" height="70%">
+<img src="pic/Screen_Container1_Java.png" width="70%" height="70%">
+<img src="pic/Screen_Container1_Python.png" width="70%" height="70%">
+  
 ### 目的：
 下prompt給WCA@IBM去生成程式碼，以下為prompting:
 
@@ -409,6 +414,8 @@ docker run -p 8080:8080 my-final
 ```
 \n
 
+<img src="pic/Screen_Container2.png" width="70%" height="70%">
+  
 
 * * * 
 ## Container3:
@@ -508,6 +515,9 @@ return jsonify(data)  # Convert dictionary to JSON response
 └── js
     └── act.js
 ```
+
+<img src="pic/Screen_Container3.png" width="70%" height="70%">
+
 
 
 

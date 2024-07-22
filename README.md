@@ -31,13 +31,22 @@ Container3 <Link> Container1
 final/api/data
 [{"member_id":"001","name":"Alice Chen","email":"alice.chen@example.com","phone":"0912345678","address":"123 Main St, Taipei City, Taiwan","join_date":"2023-05-15"},{"member_id":"002","name":"Bob Lin","email":"bob.lin@example.com","phone":"0923456789","address":"456 Oak St, Kaohsiung City, Taiwan","join_date":"2023-06-20"},{"member_id":"003","name":"Cathy Wang","email":"cathy.wang@example.com","phone":"0934567890","address":"789 Pine St, Tainan City, Taiwan","join_date":"2023-07-10"},{"member_id":"004","name":"David Lee","email":"david.lee@example.com","phone":"0945678901","address":"101 Maple St, Taichung City, Taiwan","join_date":"2023-08-05"}]
 base on this java api, help me:
-Generate a html file named index.html and css file named style.css and javascript file named act.js, that page title shows “watsonx code assistant for Track3”. This page contains 2 buttons at the same margin, one is called “python call”, another is called “Java call”. 2 Tables are at the same margin and be under 2 buttons, 1 table named A is under the button of “python call” and another 1 table named B is under the button of “Java call”. Table A and B are fixed height and width with scroll bars. html page should import jQuery library. Button of “Python call” can call restful api and extract data from json file then show the data in the table A. and button of “Java call” can call restful api and extract data from json file then show the data in the table B. All api call functions should implement by jQuery ajax and can solve Cross-Origin Resource Sharing. Buttons and tales locates at the center of page. After generate html , css and javascript filess, then generate a Dockerfile file. Target is to contain index.html and css/style.css under css folder and js/act.js under js folder in Nginx Docker container and service port as 8080
+Generate a html file named index.html and css file named style.css and javascript file named act.js, that page title shows “watsonx code assistant for Track3”.
+This page contains 2 buttons at the same margin, one is called “python call”, another is called “Java call”.
+2 Tables are at the same margin and be under 2 buttons, 1 table named A is under the button of “python call” and another 1 table named B is under the button of “Java call”.
+Table A and B are fixed height and width with scroll bars. html page should import jQuery library.
+Button of “Python call” can call restful api and extract data from json file then show the data in the table A.
+and button of “Java call” can call restful api and extract data from json file then show the data in the table B.
+All api call functions should implement by jQuery ajax and can solve Cross-Origin Resource Sharing. Buttons and tales locates at the center of page.
+After generate html , css and javascript filess, then generate a Dockerfile file.
+Target is to contain index.html and css/style.css under css folder and js/act.js under js folder in Nginx Docker container and service port as 8080
 Provide the time consumption of generating those files by each and shows quantity in second as unit
 ```
 
 ### Prompt2:
 ```
-When I enter "call java" button, it will call api http://localhost:8080/my-final/api/data and get data {"member_id":"001","name":"Alice Chen","email":"alice.chen@example.com","phone":"0912345678","address":"123 Main St, Taipei City, Taiwan","join_date":"2023-05-15"}, put the data in the table under the button.
+When I enter "call java" button, it will call api http://localhost:8080/my-final/api/data and get data
+{"member_id":"001","name":"Alice Chen","email":"alice.chen@example.com","phone":"0912345678","address":"123 Main St, Taipei City, Taiwan","join_date":"2023-05-15"}, put the data in the table under the button.
 ```
 
 ### 產出:

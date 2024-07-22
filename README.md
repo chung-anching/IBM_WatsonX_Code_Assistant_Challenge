@@ -404,7 +404,7 @@ docker run -p 8080:8080 my-final
 │           │   └── web.xml
 └──           └── index.jsp
 ```
-\n
+* * * 
 
 <img src="pic/Screen_Container2.png" width="70%" height="70%">
   

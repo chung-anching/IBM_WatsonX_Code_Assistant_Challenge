@@ -5,9 +5,9 @@
 
   
 ## 成果：  
-<center class="half">
+<p align="center">
 <img src="pic/Screen_Container1.png" width="70%" height="70%">
-</center>
+</p>
 
 <p align="center">
   <img src="pic/Screen_Container1_Python.png" width="45%">

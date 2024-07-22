@@ -1,6 +1,6 @@
 
 
-架構：
+## 架構：
 Container1 <Link> Container2/3
 	Dockerfile
 		HTML
@@ -17,10 +17,13 @@ Container3 <Link> Container1
 		dataset.json
 
   
-需要下prompt給WCA@IBM去生成程式碼，以下為prompting:
+### 目的：
+下prompt給WCA@IBM去生成程式碼，以下為prompting:
+
+* * *
 
 
-\n
+  
 ## Container11(Container1):
 
 ### Prompt1:
@@ -213,8 +216,9 @@ docker run -d -p 80:80 watsonx/track3-code-assistant:latest
 └── js
     └── act.js
 ```
+* * *
 
-\n
+  
 ## my-final(Container2):
 
 ### Prompt1:
@@ -388,6 +392,8 @@ docker run -p 8080:8080 my-final
 ```
 \n
 
+
+* * * 
 ## Container3:
 
 ### Prompt:

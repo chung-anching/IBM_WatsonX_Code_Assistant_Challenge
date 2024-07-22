@@ -9,9 +9,10 @@
 <img src="pic/Screen_Container1.png" width="70%" height="70%">
 </center>
 
-<center class="half">
-<img src="pic/Screen_Container1_Python.png" width="50%" height="50%"><img src="pic/Screen_Container1_Java.png" width="50%" height="50%">
-</center>
+<p align="center">
+  <img src="pic/Screen_Container1_Python.png" width="45%">
+  <img src="pic/Screen_Container1_Java.png" width="45%">
+</p>
   
 ### 目的：
 下prompt給WCA@IBM去生成程式碼，以下為prompting:
